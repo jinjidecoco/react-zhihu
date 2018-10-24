@@ -1,0 +1,53 @@
+{
+  "name": "react-zhihu",
+  "version": "1.0.0",
+  "description": "react redux react-redux ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development  webpack-dev-server --config ./webpack.config.js  --progress --color --open --hot ",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.production.config.js"
+  },
+  "keywords": [
+    "react",
+    "jinjidecoco"
+  ],
+  "author": "coco",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "save": "^2.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "open-browser-webpack-plugin": "0.0.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-pxtorem": "^4.0.1",
+    "style-loader": "^0.23.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^2.1.5",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
