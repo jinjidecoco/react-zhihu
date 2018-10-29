@@ -5,11 +5,12 @@ import axios from 'axios'
 
 
 export const getLatest = () => {
-	return dispatch => {
+	return (dispatch,getState) => {
 		getNewsList().then(res  =>{
 			if(res && res.status==200){
 				dispatch(getLatestData(res.data))
-				// console.log(res);
+				dispatch(getHistory( getState().prevDate.curDate) );
+				// console.log(getState() );  //data信息
 			}
 		})
 		.catch( error =>{
@@ -32,6 +33,7 @@ export const getHistory =(date) =>{
 		getHistoryList(date).then(res =>{
 			if(res && res.status==200){ 
 				// console.log(res);
+				dispatch(getPrevDate())
 				dispatch(getHistoryData(res.data))	
 		    }
 		})
@@ -45,5 +47,11 @@ export const getHistoryData =(data) =>{
 	return {
 		type:ActionTypes.GET_HISTORY_DATA,
 		data
+	}
+}
+export const getPrevDate =(date) =>{
+	return {
+		type:ActionTypes.PREV_DATE,
+		date
 	}
 }
