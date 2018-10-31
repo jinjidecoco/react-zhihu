@@ -11,7 +11,7 @@ class Home extends Component{
 			<div className='home'>
 			   {/*<Header/>*/}
 			   {/*<TopNav/>*/}
-			   <span className='title'>知乎日报</span>
+			   <p className='title'>知乎日报</p>
 			   {/*<NewsList/>*/}
 			   <NewsList/>
 			</div>

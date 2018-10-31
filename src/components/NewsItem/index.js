@@ -9,11 +9,13 @@ class NewsItem extends Component {
 	render(){
 	    const {item} =this.props
 		return(
-			<div className='new-item'>	
-			    <Link to={`/detail/${item.id}`}>
-				    <span>{item.title}</span>
-					<img src= {item.images}  alt=""/>
-			    </Link>
+			<div>
+				<div className='new-item'>	
+				    <Link to={`/detail/${item.id}`}>
+					    <span>{item.title}</span>
+						<img src= {item.images}  alt=""/>
+				    </Link>
+				</div>
 			</div>
 		)
 	}

@@ -20,17 +20,23 @@ const  newsLists =(state=[],action) => {
 	}
 }
 const initState={
-	curDate:moment().format('YYYYMMDD')
+	curDate:moment().format('YYYYMMDD'),
+	loading:true
 }
 
 
 const prevDate =(state = initState, action) =>{
 	switch(action.type){
 		case actionTypes.PREV_DATE:
-	    	return {...state,curDate:moment(state.curDate).subtract(1,'day').format('YYYYMMDD')}
+	    	return {...state,curDate:moment(state.curDate).subtract(1,'day').format('YYYYMMDD'),}
 	  //       return Object.assign({}, state, {
 			// 	curDate: moment(state.curDate).subtract(1, 'days').format('YYYYMMDD')
 			// })
+	    case actionTypes.SET_START_LOAD:
+	         return {...state,loading:true}	
+
+		case actionTypes.SET_STOP_LOAD:
+		    return {...state,loading:false}	
 	    default:
 	        return state
     }

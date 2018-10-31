@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import NewItem  from '../../components/NewsItem'
+import Loading from '../../components/loading'
 import {getNewsList} from '../../api/index.js'
 import * as Actions from '../../actions/index.js'
-import { getLatest,getHistory} from '../../actions'
+import { getLatest,getHistory,setStartLoad} from '../../actions'
 import {debounce,throttle} from'../../util/index.js'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -13,7 +14,7 @@ import moment from 'moment'
 class NewsList extends  Component {
 	constructor(props){
 		super(props);
-		this.handleScrollEvent=debounce(this.handleScroll.bind(this),400);
+		this.handleScrollEvent=debounce(this.handleScroll.bind(this),300);
 	}
 
 	componentDidMount(){
@@ -30,13 +31,10 @@ class NewsList extends  Component {
 		//页面实际高度
 		const scrollHeight= Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)
         const { prevDate } = this.props
-
-        // console.log('1:'+viewHeight);
-        // console.log('2:'+scrollTop);
-        // console.log('3:'+scrollHeight);
+        // console.log(prevDate);
 
 		if( viewHeight + scrollTop + 100 >scrollHeight){
-			console.log('加载。。。');
+            this.props.setStartLoad();
 			this.props.getHistory(prevDate.curDate);
 			// this.props.actions.getHistory(prevDate.curDate);
 		}
@@ -46,25 +44,28 @@ class NewsList extends  Component {
 		window.removeEventListener('scroll',this.handleScrollEvent)
 	}
 	render(){
-		const { newsLists } =this.props;
+		const { newsLists,prevDate} = this.props;
+		console.log(prevDate);
 		return(
 			<div className='news-list'  >
-			    <p>{this.props.newsLists.date}</p>
 			    <ul>
 				{  
 					newsLists.map((item,index) =>{ 
-	                    return  <NewItem key={item.id}  item={item} />
+	                    return (
+	                    	<NewItem key={item.id}  item={item} />
+	                    ) 	
 					})	
 					
 			    }
 			    </ul>
+			    <Loading show={prevDate.loading} title='加载中...'/>
 			</div>
 		)
 	}
 }
 
 
-//
+
 const mapStateToProps = (state) => {
 	return {
 		newsLists:state.newsLists,
@@ -72,8 +73,6 @@ const mapStateToProps = (state) => {
 	}
 
 }
-
-
 //它的功能是，将 action 作为 props 绑定到 组件 上。两种不同写法
 // const mapDispatchToProps = (dispatch ) => {
 // 	return {
@@ -84,6 +83,9 @@ const mapDispatchToProps =(dispatch) =>{
 	return {
 		getLatest:() =>{ 
            dispatch(getLatest())
+		},
+		setStartLoad:() =>{
+		   dispatch(setStartLoad())
 		},
 		getHistory:(date)=>{
 		   dispatch(getHistory(date))

@@ -10,6 +10,7 @@ export const getLatest = () => {
 			if(res && res.status==200){
 				dispatch(getLatestData(res.data))
 				dispatch(getHistory( getState().prevDate.curDate) );
+				// dispatch(setHistoryLoad(getState().prevDate.loading))
 				// console.log(getState() );  //data信息
 			}
 		})
@@ -34,7 +35,9 @@ export const getHistory =(date) =>{
 			if(res && res.status==200){ 
 				// console.log(res);
 				dispatch(getPrevDate())
-				dispatch(getHistoryData(res.data))	
+				dispatch(getHistoryData(res.data))
+				dispatch(setStopLoad())
+	
 		    }
 		})
 		.catch( error =>{
@@ -42,6 +45,7 @@ export const getHistory =(date) =>{
 		})	    
     }
 }
+
 //异步获取之后的回调
 export const getHistoryData =(data) =>{
 	return {
@@ -49,6 +53,19 @@ export const getHistoryData =(data) =>{
 		data
 	}
 }
+export const setStartLoad =(data) =>{
+	return {
+		type:ActionTypes.SET_START_LOAD,
+		data
+	}
+}
+export const setStopLoad =(data) =>{
+	return {
+		type:ActionTypes.SET_STOP_LOAD,
+		data
+	}
+}
+
 export const getPrevDate =(date) =>{
 	return {
 		type:ActionTypes.PREV_DATE,

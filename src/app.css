@@ -1,0 +1,25 @@
+body {
+/*      background: #f2f3f4;
+*/      width: 100%;
+      /* height:1000px; */
+      -webkit-overflow-scrolling: touch;
+    }
+    body::-webkit-scrollbar {
+       display: none;
+    } 
+    /* 根据屏幕设置像素大小 */
+    @media screen and (max-width:321px) {
+      #app {
+        font-size: 15px
+      }
+    }
+    @media screen and (min-width:321px) and (max-width:400px) {
+      #app {
+        font-size: 16px
+      }
+    }
+    @media screen and (min-width:400px) {
+      #app {
+        font-size: 18px
+      }
+    }
