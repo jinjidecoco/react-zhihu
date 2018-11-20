@@ -14,12 +14,15 @@ class Deatil extends  Component{
         const id = this.props.match.params.id;
 		getNewsDetail(id).then(res=>{
 			if(res.status==200){
-				console.log(res);
+				// console.log(res);
 				this.setState({
 					retData:res.data
 				})
 			}
 		})
+	}
+	componentWillUnmount(){
+		
 	}
 	render(){
 		const {retData}=this.state

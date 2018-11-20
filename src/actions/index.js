@@ -9,6 +9,7 @@ export const getLatest = () => {
 		getNewsList().then(res  =>{
 			if(res && res.status==200){
 				dispatch(getLatestData(res.data))
+				dispatch(getLatestPic(res.data))
 				dispatch(getHistory( getState().prevDate.curDate) );
 				// dispatch(setHistoryLoad(getState().prevDate.loading))
 				// console.log(getState() );  //data信息
@@ -20,13 +21,8 @@ export const getLatest = () => {
 
 	}
 }
-//异步获取之后的回调
-export const getLatestData =(data) =>{
-	return {
-		type :ActionTypes.GET_LATEST_DATA,
-		data
-	}
-}
+
+
 
 
 export const getHistory =(date) =>{
@@ -46,6 +42,24 @@ export const getHistory =(date) =>{
     }
 }
 
+
+
+
+//异步获取之后的回调
+export const getLatestData =(data) =>{
+	return {
+		type :ActionTypes.GET_LATEST_DATA,
+		data
+	}
+}
+
+export  const getLatestPic = (data)=>{
+     return {
+     	type :ActionTypes.GET_LATEST_PIC,
+     	data
+     }
+}	
+
 //异步获取之后的回调
 export const getHistoryData =(data) =>{
 	return {
@@ -53,6 +67,7 @@ export const getHistoryData =(data) =>{
 		data
 	}
 }
+//开始加载...
 export const setStartLoad =(data) =>{
 	return {
 		type:ActionTypes.SET_START_LOAD,
@@ -70,5 +85,17 @@ export const getPrevDate =(date) =>{
 	return {
 		type:ActionTypes.PREV_DATE,
 		date
+	}
+}
+export const setBgShow=(data) =>{
+	return {
+		type:ActionTypes.SET_BG_SHOW,
+		data
+	}
+}
+export const setBgHide=(data) =>{
+	return {
+		type:ActionTypes.SET_BG_HIDE,
+		data
 	}
 }

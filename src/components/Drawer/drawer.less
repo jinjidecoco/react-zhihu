@@ -1,0 +1,46 @@
+.drawer{
+	position:fixed;
+	width:60%;
+	left:-60%;
+	top:0;
+	bottom:0;
+	font-size:16px;
+	height:100%;
+	z-index:20;
+	background: #444;
+	transition: all .3s ease;
+	color:#fff;
+    &.show{
+    	transform:translateX(100%);
+    }
+    .user{
+    	padding: 15px;
+    	.name{
+    		padding:5px;
+    	}
+    }
+    .setting{
+    	display:flex;
+    	span{
+    		text-align:center;
+    		flex:1;
+    		.icon{
+    			font-size:20px;
+    			height:22px;
+    			line-height:22px;
+    		}
+    		.text{
+    			margin-top:2px;
+    			font-size:12px;
+    		}
+    	}
+    }
+    .bottom{
+    	padding:10px;
+    	position:absolute;
+    	width: 90%;
+    	bottom:0;
+    	display:flex;
+    	justify-content: space-between;
+    }
+}

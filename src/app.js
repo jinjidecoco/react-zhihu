@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { BrowserRouter as Router, Route, Redirect,Switch } from "react-router-dom";
 import './app.css'
+import './font/iconfont.css'
 import About from './components/About'
 import Recond from './components/Recond'
 import Home from './containers/Home'

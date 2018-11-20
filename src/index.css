@@ -54,6 +54,7 @@ li {
     list-style: none;
 }
 
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -86,4 +87,5 @@ body {
     box-sizing: border-box;
 
 }
+* { touch-action: pan-y; } 
 -webkit-overflow-scrolling: touch;

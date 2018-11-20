@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import NewItem  from '../../components/NewsItem'
+import './news-list.less'
 import Loading from '../../components/loading'
 import {getNewsList} from '../../api/index.js'
 import * as Actions from '../../actions/index.js'
@@ -14,12 +15,19 @@ import moment from 'moment'
 class NewsList extends  Component {
 	constructor(props){
 		super(props);
-		this.handleScrollEvent=debounce(this.handleScroll.bind(this),300);
+		this.handleScrollEvent=debounce(this.handleScroll.bind(this),100);
 	}
 
 	componentDidMount(){
+		if(this.props.newsLists.length<=0){
 		// this.props.actions.getLatest();
-		this.props.getLatest()
+			this.props.getLatest()
+	    }else{
+	    	// console.log(NewsList.scrollPoint);
+	    	// window.document.body.scrollTop||window.document.documentElement.scrollTop =NewsList.scrollPoint
+	    	window.document.body.scrollTop=NewsList.scrollPoint;
+	    }
+
 		window.addEventListener('scroll',this.handleScrollEvent)
 
 	}
@@ -31,21 +39,22 @@ class NewsList extends  Component {
 		//页面实际高度
 		const scrollHeight= Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)
         const { prevDate } = this.props
-        // console.log(prevDate);
 
-		if( viewHeight + scrollTop + 100 >scrollHeight){
+        NewsList.scrollPoint = scrollTop;//全局
+
+		if( viewHeight + scrollTop + 150 >scrollHeight){
             this.props.setStartLoad();
 			this.props.getHistory(prevDate.curDate);
 			// this.props.actions.getHistory(prevDate.curDate);
 		}
 	}
 	componentWillUnmount(){
-		console.log('cococ');
-		window.removeEventListener('scroll',this.handleScrollEvent)
+		window.removeEventListener('scroll',this.handleScrollEvent);
+		// sessionStorage.setItem('scrollPoint',NewsList.scrollPoint)
 	}
 	render(){
 		const { newsLists,prevDate} = this.props;
-		console.log(prevDate);
+		// console.log(this.props);
 		return(
 			<div className='news-list'  >
 			    <ul>
@@ -55,7 +64,6 @@ class NewsList extends  Component {
 	                    	<NewItem key={item.id}  item={item} />
 	                    ) 	
 					})	
-					
 			    }
 			    </ul>
 			    <Loading show={prevDate.loading} title='加载中...'/>
@@ -69,7 +77,8 @@ class NewsList extends  Component {
 const mapStateToProps = (state) => {
 	return {
 		newsLists:state.newsLists,
-		prevDate:state.prevDate
+		prevDate:state.prevDate,
+		newswiper:state.newswiper
 	}
 
 }

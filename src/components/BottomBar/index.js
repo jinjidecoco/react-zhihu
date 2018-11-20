@@ -6,11 +6,11 @@ class BottomBar extends Component{
 		return(
 			<div className='bottom-bar'>
 			   <ul className='handle-list'>
-			   	<li>返回</li>
-			   	<li>下一个</li>
-			   	<li>👍</li>
-			   	<li>转发</li>
-			   	<li>评论</li>
+			   	<li onClick={()=>{window.history.back()}}><span><i className='iconfont icon-fanhui'></i></span></li>
+			   	<li><span><i className='iconfont icon-xiayige'></i></span></li>
+			   	<li><span><i className='iconfont icon-up'></i></span></li>
+			   	<li><span><i className='iconfont icon-zhuanfa'></i></span></li>
+			   	<li><span><i className='iconfont icon-pinglun'></i></span></li>
 			   </ul>
 			</div>
 		)

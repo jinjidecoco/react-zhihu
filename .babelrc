@@ -4,7 +4,9 @@
        "react",
        "stage-2"
      ],
-     "plugins": []
+     "plugins": [
+        ["import", { libraryName: "antd-mobile", style: "css" }]
+     ]
 }
 
 

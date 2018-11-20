@@ -11,7 +11,6 @@ class Home extends Component{
 			<div className='home'>
 			   <Header/>
 			   <TopNav/>
-			   <span className='title'></span>
 			   <NewsList/>
 			</div>
 		)

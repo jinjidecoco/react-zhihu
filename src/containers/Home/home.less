@@ -1,8 +1,55 @@
 .home{
-	.title{
-      font-size: 20px;
-      color:red;
-      text-align:center;
-      padding:10px;
+	position:relative;
+	.blocking{
+		width:100%;
+		position:fixed;
+		top:0;
+		right:0;
+		left:0;
+		bottom:0;
+		z-index:15;
+		height:100%;
+		// background:#ccc;
+		overflow: hidden;
+	    }
+	.header{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right:0;
+		font-size: 18px;
+		color: #fff;
+		height: 40px;
+		line-height: 40px;
+		text-align:center;
+		z-index: 10;
+		padding: 0 8px;
+		.menu{
+			float: left;
+		}
+
 	}
+
+	.swiper{
+		height:180px;
+		width: 100%;
+		position:relative;
+		.slider-list,.am-carousel{
+			height:180px;
+		}
+		// touch-action: pan-x;
+		.bcg{
+			background-repeat: no-repeat;
+			.title{
+			  font-size: 18px;
+			  position:absolute;
+			  bottom:20px;
+			  left:10px;	
+		      color:#fff;
+		      text-shadow:1px 1px 1px #333;
+		      background:#cccccc42;
+			}
+	    }
+	}
+	
 }

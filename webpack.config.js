@@ -56,7 +56,7 @@ module.exports ={
 	            	}
 	              }
             	]
-		    }
+		    },
 		]
 	},
 	plugins: [
@@ -82,7 +82,7 @@ module.exports ={
 	],
 	devServer:{
 	    publicPath:'/',
-	    host:'localhost',
+	    host:'192.168.31.13',
 	    port:'8081',
 		proxy: {
 			'/api/4/*':{
