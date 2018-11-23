@@ -23,7 +23,6 @@ class NewsList extends  Component {
 		// this.props.actions.getLatest();
 			this.props.getLatest()
 	    }else{
-	    	// console.log(NewsList.scrollPoint);
 	    	// window.document.body.scrollTop||window.document.documentElement.scrollTop =NewsList.scrollPoint
 	    	window.document.body.scrollTop=NewsList.scrollPoint;
 	    }
@@ -66,7 +65,7 @@ class NewsList extends  Component {
 					})	
 			    }
 			    </ul>
-			    <Loading show={prevDate.loading} title='加载中...'/>
+			    <Loading show={prevDate.loading} title='加载中...' />
 			</div>
 		)
 	}

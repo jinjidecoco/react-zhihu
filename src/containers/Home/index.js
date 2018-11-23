@@ -61,7 +61,7 @@ class Home extends Component{
 			<div className='home' >
 			   	<div className='blocking' style={showBlock} onClick={this.handleHide.bind(this)}>
        			</div>
-       			<Drawer show={bgDisplay.show}/>
+       			<Drawer show={bgDisplay.show} />
 			    <div className="header" style={this.state.bgStyle}>
 			        <span className='menu' onClick={this.showSide.bind(this)}><i className='icon iconfont icon-menu'></i></span>今日新闻
 			    </div>
@@ -82,7 +82,7 @@ class Home extends Component{
 		              	}  
 	                </Carousel>
                 </div>
-			   <NewsList/>
+			   <NewsList />
 			</div>
 		)
 	}
