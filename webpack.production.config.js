@@ -7,6 +7,9 @@ var HtmlWebpackPlugin =require('html-webpack-plugin');
 //webpack 4 下 ExtractTextPlugin不可使用 抽取css
 var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 var CleanWebpackPlugin =require('clean-webpack-plugin');
 
