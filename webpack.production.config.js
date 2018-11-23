@@ -24,7 +24,7 @@ module.exports ={
 		path: path.resolve(__dirname, "dist"),
 		filename:'js/[name].[chunkhash:8].js',
 		chunkFilename: '[name].chunkhash.js',
-		publicPath:'/'
+		publicPath:'115.236.69.128'
 	},
 	mode: 'production',
 	optimization: {
@@ -128,9 +128,9 @@ module.exports ={
 	  	filename:'css/[name].[contenthash].css',
 	  	// chunkFilename:"[id].css"
 	  }),
-	   new OpenBrowserPlugin({
-	  	url: 'http://localhost:8890'
-	  }),
+	  //  new OpenBrowserPlugin({
+	  // 	url: '115.236.69.124:8890'
+	  // }),
 
 	  new OptimizeCssAssetsPlugin({
 	    assetNameRegExp: /\.optimize\.css$/g,
