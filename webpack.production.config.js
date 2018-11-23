@@ -127,7 +127,7 @@ module.exports ={
 	  }),
 	   new OpenBrowserPlugin({
 	  	url: 'http://localhost:8890'
-	  })
+	  }),
 
 	  new OptimizeCssAssetsPlugin({
 	    assetNameRegExp: /\.optimize\.css$/g,
