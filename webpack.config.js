@@ -82,8 +82,8 @@ module.exports ={
 	],
 	devServer:{
 	    publicPath:'/',
-	    host:'192.168.31.13',
-	    port:'8081',
+	    host:'localhost',
+	    port:'8890',
 		proxy: {
 			'/api/4/*':{
 				target: 'https://news-at.zhihu.com/',
