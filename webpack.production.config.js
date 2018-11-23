@@ -125,6 +125,9 @@ module.exports ={
 	  	filename:'css/[name].[contenthash].css',
 	  	// chunkFilename:"[id].css"
 	  }),
+	   new OpenBrowserPlugin({
+	  	url: 'http://localhost:8890'
+	  })
 
 	  new OptimizeCssAssetsPlugin({
 	    assetNameRegExp: /\.optimize\.css$/g,
