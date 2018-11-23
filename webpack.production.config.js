@@ -24,7 +24,7 @@ module.exports ={
 		path: path.resolve(__dirname, "dist"),
 		filename:'js/[name].[chunkhash:8].js',
 		chunkFilename: '[name].chunkhash.js',
-		publicPath:'115.236.69.128'
+		publicPath:'115.236.69.124'
 	},
 	mode: 'production',
 	optimization: {
