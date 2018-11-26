@@ -23,8 +23,8 @@ module.exports ={
 	output:{ 
 		path: path.resolve(__dirname, "dist"),
 		filename:'js/[name].[chunkhash:8].js',
-		chunkFilename: '[name].chunkhash.js',
-		publicPath:'115.236.69.124'
+		// chunkFilename: '[name].chunkhash.js',
+		publicPath:'/'
 	},
 	mode: 'production',
 	optimization: {
@@ -54,20 +54,22 @@ module.exports ={
         	name:'runtime',
         },
 	    minimizer: [
-	      new OptimizeCssAssetsPlugin({}),
 	      new UglifyJsPlugin({
-	        cache: true,
-	        parallel: true,
-	        extractComments: false, // 移除注释
-	        uglifyOptions: {
-              compress: {
-                unused: true,
-                warnings: false,
-                drop_debugger: true
-              },      
-	        }
+	           cache: true,
+	           parallel: true,
+	           sourceMap:false,
+	           extractComments: false, // 移除注释
+	           uglifyOptions: {
+	              compress: {
+	                unused: true,
+	                warnings: false,
+	                drop_debugger: true
+	              },      
+	            }
 
-	      })
+	      }),
+	      new OptimizeCssAssetsPlugin({}),
+
 	    ]
     },
 	module:{
@@ -121,7 +123,6 @@ module.exports ={
 	  new HtmlWebpackPlugin({
 	  	filename:'index.html',
 	  	template: path.join(__dirname,'src/template.html'),
-	  	hash: true,
 	  }),      
       //抽取css代码
 	  new MiniCssExtractPlugin({
