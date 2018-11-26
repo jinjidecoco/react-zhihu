@@ -15,6 +15,7 @@
     "react",
     "jinjidecoco"
   ],
+  "homepage": ".",
   "author": "coco",
   "license": "ISC",
   "dependencies": {
