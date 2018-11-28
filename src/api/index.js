@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const urlPrefix ='';
-const urlPrefix ='https://news-at.zhihu.com';
+// const urlPrefix ='https://news-at.zhihu.com';
 
 export function  getNewsList(){
 	const url = urlPrefix + '/api/4/news/latest'
