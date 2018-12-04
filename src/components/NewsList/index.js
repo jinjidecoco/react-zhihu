@@ -23,8 +23,8 @@ class NewsList extends   Component {
 		return(
 			<div className='news-list'>
 				{   
-					newsLists.map((item,index) =>{ 
-	                    return  <NewItem key={item.id}  item={item} />
+					newsLists.map((item,index)=>{ 
+	                    return  <NewItem key={item.id} item={item} />
 					})
 			    }
 			</div>

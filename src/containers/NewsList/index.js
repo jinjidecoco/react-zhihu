@@ -59,8 +59,9 @@ class NewsList extends  Component {
 			    <ul>
 				{  
 					newsLists.map((item,index) =>{ 
+						// console.log(index);
 	                    return (
-	                    	<NewItem key={item.id}  item={item} />
+	                    	<NewItem key={item.id}  id={index} item={item} />
 	                    ) 	
 					})	
 			    }
