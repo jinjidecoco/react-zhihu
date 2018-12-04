@@ -7,16 +7,16 @@ import { Route, Link } from "react-router-dom";
 
 class NewsItem extends Component {
 	render(){
-	    const {item} =this.props
+	    const {item,id} =this.props;
 		return(
-			<div>
-				<div className='new-item'>	
+			// <div>
+				<div className='new-item' index={id}>	
 				    <Link to={`/detail/${item.id}`}>
 					    <span>{item.title}</span>
 						<img src= {item.images}  alt=""/>
 				    </Link>
 				</div>
-			</div>
+			// </div>
 		)
 	}
 }
