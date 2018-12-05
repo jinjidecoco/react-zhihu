@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const urlPrefix ='';
+// const urlPrefix ='';
 // const urlPrefix ='http://news-at.zhihu.com';
-// const  urlPrefix ='http://115.236.69.124:8081';
+const  urlPrefix ='http://localhost:8081';
 
 export function  getNewsList(){
 	const url = urlPrefix + '/api/4/news/latest'
