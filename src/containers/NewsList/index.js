@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import NewItem  from '../../components/NewsItem'
+import NewsItem  from '../../components/NewsItem'
 import './news-list.less'
 import Loading from '../../components/loading'
 import {getNewsList} from '../../api/index.js'
@@ -19,16 +19,14 @@ class NewsList extends  Component {
 	}
 
 	componentDidMount(){
-		if(this.props.newsLists.length<=0){
-		// this.props.actions.getLatest();
+		if(this.props.newsLists.allData.length<=0){
+		   //this.props.actions.getLatest();
 			this.props.getLatest()
 	    }else{
 	    	// window.document.body.scrollTop||window.document.documentElement.scrollTop =NewsList.scrollPoint
 	    	window.document.body.scrollTop=NewsList.scrollPoint;
 	    }
-
 		window.addEventListener('scroll',this.handleScrollEvent)
-
 	}
 	handleScroll (){
 		//可视区域高度
@@ -37,7 +35,7 @@ class NewsList extends  Component {
 		const scrollTop   = window.document.body.scrollTop||window.document.documentElement.scrollTop;
 		//页面实际高度
 		const scrollHeight= Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)
-        const { prevDate } = this.props
+        const { prevDate} = this.props;
 
         NewsList.scrollPoint = scrollTop;//全局
 
@@ -52,22 +50,32 @@ class NewsList extends  Component {
 		// sessionStorage.setItem('scrollPoint',NewsList.scrollPoint)
 	}
 	render(){
-		const { newsLists,prevDate} = this.props;
-		// console.log(this.props);
+		const newsLists = this.props.newsLists;
+		const {prevDate}=this.props;
 		return(
-			<div className='news-list'  >
-			    <ul>
-				{  
-					newsLists.map((item,index) =>{ 
-						// console.log(index);
-	                    return (
-	                    	<NewItem key={item.id}  id={index} item={item} />
-	                    ) 	
-					})	
+			<div className='news-list'>
+				{
+					newsLists.allData.map((items,index)=>{
+						const initDate = moment(items.date).locale('zh-cn').format('MMM Do YYYY dddd');
+						const isShow = index==0 ?{display:'none'}:{display:''};
+						// console.log(initDate);
+				        return ( 
+					        <div key={index}>
+				                <h1 className='date' style={isShow} > {initDate}</h1>
+				                {
+					            	items.stories.map((item,index)=>{ 
+					            	  return(
+					                   <NewsItem  item={item}  key={index} id={index}/>
+					                  ) 
+					                })
+				                }
+			                </div>
+		                )
+		  
+	                }) 
 			    }
-			    </ul>
-			    <Loading show={prevDate.loading} title='加载中...' />
-			</div>
+                <Loading show={prevDate.loading} title='加载中...'/>
+	        </div>
 		)
 	}
 }
@@ -77,8 +85,7 @@ class NewsList extends  Component {
 const mapStateToProps = (state) => {
 	return {
 		newsLists:state.newsLists,
-		prevDate:state.prevDate,
-		newswiper:state.newswiper
+		prevDate:state.prevDate
 	}
 
 }

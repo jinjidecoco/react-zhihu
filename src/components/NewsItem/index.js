@@ -7,17 +7,21 @@ import { Route, Link } from "react-router-dom";
 
 class NewsItem extends Component {
 	render(){
-	    const {item,id} =this.props;
-		return(
-			// <div>
-				<div className='new-item' index={id}>	
-				    <Link to={`/detail/${item.id}`}>
-					    <span>{item.title}</span>
-						<img src= {item.images}  alt=""/>
-				    </Link>
-				</div>
-			// </div>
-		)
+		const eachItem =this.props.item;
+		// console.log(this.props);
+		// const {id}=this.props;
+		// return(
+			// items.map((item,index) =>{
+				return(
+					<div className='new-item'  >	
+					    <Link to={`/detail/${eachItem.id}`}>
+						    <span>{eachItem.title}</span>
+							<img src= {eachItem.images}  alt=""/>
+					    </Link>
+					</div>
+				)
+			// })	
+		// )			
 	}
 }
 // NewsItem.PropTypes = {

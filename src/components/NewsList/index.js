@@ -8,7 +8,7 @@ class NewsList extends   Component {
 	}
 	componentDidMount(){
 		getNewsList().then(res  =>{
-			if(res && res.status==200){
+			if(res && res.status===200){
 				if(res.data.stories){
 					this.setState({ 
 						newsLists:res.data.stories,
@@ -24,7 +24,7 @@ class NewsList extends   Component {
 			<div className='news-list'>
 				{   
 					newsLists.map((item,index)=>{ 
-	                    return  <NewItem key={item.id} item={item} />
+	                    return  <NewsItem key={item.id} item={item} />
 					})
 			    }
 			</div>

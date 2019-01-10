@@ -29,7 +29,6 @@ export const getHistory =(date) =>{
    return dispatch => {
 		getHistoryList(date).then(res =>{
 			if(res && res.status==200){ 
-				// console.log(res);
 				dispatch(getPrevDate())
 				dispatch(getHistoryData(res.data))
 				dispatch(setStopLoad())

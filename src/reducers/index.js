@@ -2,18 +2,38 @@ import { combineReducers } from 'redux'
 import * as actionTypes  from '../actions/actionTypes'
 import moment from 'moment'
 
+const  dailyState={
+    allData:[],
+	stories:[],
+	date:''
+}
 
-
-const  newsLists =(state=[],action) => {
+const  newsLists =(state = dailyState,action) =>{
 	switch(action.type) {
 		case actionTypes.GET_LATEST_DATA:
-			return action.data.stories
+		    // return action.data.stories
+		    return {...state,
+		    	stories:action.data.stories,
+		    	date:action.data.date,
+		    	allData:[].concat(action.data)
+		    }
 		case actionTypes.GET_HISTORY_DATA:
-		    return [...state, ...action.data.stories];
-		     //return Object.assign({},state,{
+		     // return Object.assign({},state,{
+       //           stories:action.data.stories,
+       //           date:action.data.date
+		     // })
+		    // return [...state, ...action.data.stories];
+		  //    return Object.assign({},state,{
 			 //   stories: state.stories.concat(action.data.stories),
-			 // 	  date: moment(action.data.date).subtract(1,'day').format('YYYYMMDD')
+			 // 	  date:action.data.date,
+			 // 	  allData:state.allData.concat(action.data),
 			 // })
+			 return {
+			 	...state,
+			 	allData:state.allData.concat(action.data),
+			 	stories:action.data.stories,
+			 	date:action.data.date
+			 }
 		default:
 			return state;
 	}

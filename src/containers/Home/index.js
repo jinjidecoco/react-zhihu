@@ -17,25 +17,45 @@ class Home extends Component{
 		super(props);
 		this.handelBackground=this.handelBackground.bind(this);
 		this.state={
-			bgStyle:{}
+			bgStyle:{},
+			headTitle:[{title:'', point:180}]
 		}
-
-
 	}
 	componentDidMount(){
-		window.addEventListener('scroll',this.handelBackground)
+		window.addEventListener('scroll',this.handelBackground);
 	}
-	handelBackground(){
-		const scrollTop   = window.document.body.scrollTop||window.document.documentElement.scrollTop;
+	handelBackground(event){
+		const scrollTop  = window.document.body.scrollTop||window.document.documentElement.scrollTop;
+		// const scrollHeight = event.target.scrollHeight;
+		// console.log(scrollTop);
+
 		if(scrollTop>180){
 			this.setState({
-				bgStyle:{backgroundColor:'#2094bd'}
+				bgStyle:{backgroundColor:'#10a5da'}
 			})
+			this.changeTitle(scrollTop);
 		}else{
 			this.setState({
 				bgStyle:{}
 			})
 		}
+	}
+	changeTitle(point){
+		// const headDate =this.props.prevDate;
+
+		// const {headTitle} = this.state;
+		// // console.log(headTitle);
+		// headTitle.push({title:headDate,point:point})
+		
+        // console.log(headTitle.title);
+		// this.setState({  
+  //           headTitle:headTitle.push({title:headDate,point:point})
+		// })
+		
+		// for (var i=0;i < headTitle.length;i++){
+
+		// }
+
 	}
 	showSide(){
 		this.props.actions.setBgShow();
@@ -44,11 +64,12 @@ class Home extends Component{
 		this.props.actions.setBgHide();
 	}
 	componentWillUnmout(){
-		window.removeEventListener('scroll',this.handelBackground)
+		window.removeEventListener('scroll',this.handelBackground);
 	}
 	render(){
-		const {newswiper}= this.props
-		const {bgDisplay} =this.props
+		const {newswiper,bgDisplay}= this.props;
+		const headDate = this.props.prevDate;
+		console.log(headDate);
 		const showBlock  = this.props.bgDisplay.show==true?{display:'block'}:{display:'none'}
 		const setting = {
             dots: true,
@@ -63,7 +84,10 @@ class Home extends Component{
        			</div>
        			<Drawer show={bgDisplay.show} />
 			    <div className="header" style={this.state.bgStyle}>
-			        <span className='menu' onClick={this.showSide.bind(this)}><i className='icon iconfont icon-menu'></i></span>今日新闻
+			        <span className='menu' onClick={this.showSide.bind(this)}>
+			        <i className='icon iconfont icon-menu'></i>
+			        </span> 
+			        {headDate.curDate}
 			    </div>
 
                 <div className="swiper" style={{height:'180px'}}>
@@ -77,12 +101,11 @@ class Home extends Component{
 				                		<p className='title'> {val.title}</p>
 			                    	</div>
 			                    )
-	                        })
-			                
+	                        })  
 		              	}  
 	                </Carousel>
                 </div>
-			   <NewsList />
+                	<NewsList/>
 			</div>
 		)
 	}
@@ -91,7 +114,8 @@ class Home extends Component{
 const mapStateToProps = (state) => {
 	return {
 		newswiper: state.newswiper,
-		bgDisplay: state.bgDisplay
+		bgDisplay: state.bgDisplay,
+		prevDate:state.prevDate
 	}
 
 }
